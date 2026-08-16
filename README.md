@@ -23,3 +23,9 @@ I got my list of characters from [The Owl House Wiki](https://theowlhouse.fandom
 * Caleb Wittebane
 * Belos (Philip Wittebane)
 * The Collector
+
+# Planned Features
+* Coven and Group filters
+* Native app support
+* Image gallery (with hyperlinks from the character to their position in the web)
+* Better graphics

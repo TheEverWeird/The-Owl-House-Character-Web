@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Owl House Character Web - Home</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Roboto+Slab:wght@100..900&display=swap" rel="stylesheet">
+  
+  <!-- Linking to your existing CSS file! -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="home-body">
+
+  <!-- The canvas where our javascript will draw the stars -->
+  <canvas id="star-canvas"></canvas>
+
+  <div class="home-container">
+    <h1 class="home-title">The Owl House<br>Character Web</h1>
+    
+    <!-- The Start Button links exactly to your renamed file -->
+    <a href="web.html" class="start-button">Start</a>
+  </div>
+
+  <script>
+    // --- PARALLAX STAR LOGIC ---
+    const canvas = document.getElementById('star-canvas');
+    const ctx = canvas.getContext('2d');
+    
+    // Set canvas to full screen
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+
+    let stars = [];
+    const numStars = 200; // Amount of stars
+    let mouseX = window.innerWidth / 2;
+    let mouseY = window.innerHeight / 2;
+
+    // Generate random stars
+    for (let i = 0; i < numStars; i++) {
+      stars.push({
+        x: Math.random() * canvas.width,
+        y: Math.random() * canvas.height,
+        radius: Math.random() * 2 + 0.5,
+        // Randomly assign semi-transparent blue or purple
+        color: Math.random() > 0.5 ? 'rgba(100, 150, 255, 0.6)' : 'rgba(180, 80, 255, 0.6)', 
+        // Parallax factor determines how fast a star moves (depth)
+        parallaxFactor: Math.random() * 0.05 + 0.01 
+      });
+    }
+
+    // Track mouse movement
+    window.addEventListener('mousemove', (e) => {
+      mouseX = e.clientX;
+      mouseY = e.clientY;
+    });
+
+    // Handle window resizing
+    window.addEventListener('resize', () => {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    });
+
+    // Animation Loop
+    function animate() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+      // Calculate how far the mouse is from the center of the screen
+      let offsetX = (mouseX - canvas.width / 2);
+      let offsetY = (mouseY - canvas.height / 2);
+
+      stars.forEach(star => {
+        // Move stars opposite to the mouse based on their depth
+        let currentX = star.x - (offsetX * star.parallaxFactor);
+        let currentY = star.y - (offsetY * star.parallaxFactor);
+
+        // Keep stars looping on screen infinitely
+        if (currentX < 0) currentX += canvas.width;
+        if (currentX > canvas.width) currentX -= canvas.width;
+        if (currentY < 0) currentY += canvas.height;
+        if (currentY > canvas.height) currentY -= canvas.height;
+
+        // Draw the star
+        ctx.beginPath();
+        ctx.arc(currentX, currentY, star.radius, 0, Math.PI * 2);
+        ctx.fillStyle = star.color;
+        ctx.fill();
+      });
+
+      requestAnimationFrame(animate);
+    }
+
+    // Start the animation
+    animate();
+  </script>
+
+</body>
+</html>

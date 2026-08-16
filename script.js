@@ -370,3 +370,51 @@ legendHeader.addEventListener('click', () => {
     legendArrow.className = 'fa-solid fa-chevron-up';
   }
 });
+
+// 9. --- RESET CAMERA VIEW LOGIC ---
+const resetViewBtn = document.getElementById('reset-view-btn');
+
+resetViewBtn.addEventListener('click', () => {
+  network.fit({
+    animation: {
+      duration: 1000,
+      easingFunction: 'easeInOutQuad'
+    }
+  });
+});
+
+// 10. --- LIVE SEARCH & AUTO-ZOOM LOGIC ---
+const searchInput = document.getElementById('character-search');
+
+searchInput.addEventListener('input', (e) => {
+  const searchTerm = e.target.value.toLowerCase().trim();
+  const toggleRows = document.querySelectorAll('.toggle-row');
+
+  toggleRows.forEach(row => {
+    const characterName = row.textContent.toLowerCase();
+    
+    // Filter sidebar list items
+    if (characterName.includes(searchTerm)) {
+      row.style.display = 'flex';
+    } else {
+      row.style.display = 'none';
+    }
+  });
+
+  // If exact or close match found, smooth-zoom camera to that character node
+  if (searchTerm.length > 1) {
+    const matchedNode = nodes.get({
+      filter: item => item.label.toLowerCase().includes(searchTerm) && !item.hidden
+    })[0];
+
+    if (matchedNode) {
+      network.focus(matchedNode.id, {
+        scale: 1.2,
+        animation: {
+          duration: 800,
+          easingFunction: 'easeInOutQuad'
+        }
+      });
+    }
+  }
+});
