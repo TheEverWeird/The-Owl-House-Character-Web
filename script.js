@@ -7,9 +7,14 @@ const nodes = new vis.DataSet([
   { id: 5, label: 'Willow', color: '#fa75ef' },
   { id: 6, label: 'Gus', color: '#fa75ef' },
   { id: 7, label: 'Hunter', color: '#fa75ef' },
-  { id: 8, label: 'Lilith', color: '#fa75ef' },
-  { id: 9, label: 'Hooty', color: '#fa75ef' },
-  { id: 10, label: 'Raine', color: '#fa75ef'}
+  { id: 8, label: 'Lilith', color: '#fa75ef', hidden: true },
+  { id: 9, label: 'Hooty', color: '#fa75ef', hidden: true },
+  { id: 10, label: 'Raine', color: '#fa75ef', hidden: true},
+  { id: 11, label: 'Boscha', color: '#ff5454', hidden: true},
+  { id: 12, label: 'Camila', color: '#fa75ef', hidden: true},
+  { id: 13, label: 'Caleb Wittebane', color: '#ff5454', widthConstraint: { minimum: 115 }},
+  { id: 14, label: 'Belos (Philip Wittebane)', color: '#75fadb', widthConstraint: { minimum: 125 }},
+  { id: 15, label: 'The Collector', color: '#75fadb', hidden: true}
 ]);
 
 // 2. Define edges (Relationships) - Paste your full list of edges here!
@@ -24,6 +29,10 @@ const edges = new vis.DataSet([
     { from: 1, to: 8, label: 'Cool Aunt' },
     { from: 1, to: 9, label: '"Housemate"' },
     { from: 1, to: 10, label: 'Stepdad' },
+    { from: 1, to: 11, label: 'Bully' },
+    { from: 1, to: 12, label: 'Mum' },
+    { from: 1, to: 14, label: 'Enemy'},
+    { from: 1, to: 15, label: 'Enemy turned Friend'},
     { from: 2, to: 1, label: 'Sweet Potato (Girlfriend)' },
     { from: 2, to: 3, label: 'Friend' },
     { from: 2, to: 4, label: 'Friend' },
@@ -33,6 +42,10 @@ const edges = new vis.DataSet([
     { from: 2, to: 8, label: 'Idol turned Friend' },
     { from: 2, to: 9, label: 'Enemy' },
     { from: 2, to: 10, label: 'Acquaintance' },
+    { from: 2, to: 11, label: 'Ex-Friend/Bully'},
+    { from: 2, to: 12, label: 'Girlfriends Mum / Caretaker'},
+    { from: 2, to: 14, label: 'Enemy'},
+    { from: 2, to: 15, label: 'Enemy turned Friend'},
     { from: 3, to: 1, label: 'Daughter' },
     { from: 3, to: 2, label: 'Daughters Girlfriend' },
     { from: 3, to: 4, label: 'Son' },
@@ -42,6 +55,10 @@ const edges = new vis.DataSet([
     { from: 3, to: 8, label: 'Sister' },
     { from: 3, to: 9, label: 'Annoying Housemate' },
     { from: 3, to: 10, label: 'Boyfriend' },
+    { from: 3, to: 12, label: 'Mum Friend'},
+    { from: 3, to: 13, label: 'Ancestor'},
+    { from: 3, to: 14, label: 'Enemy'},
+    { from: 3, to: 15, label: 'Enemy turned Friend'},
     { from: 4, to: 1, label: 'Sister' },
     { from: 4, to: 2, label: 'Sisters Girlfriend' },
     { from: 4, to: 3, label: 'Mum' },
@@ -51,6 +68,9 @@ const edges = new vis.DataSet([
     { from: 4, to: 8, label: 'Aunt' },
     { from: 4, to: 9, label: 'Annoying Housemate' },
     { from: 4, to: 10, label: 'Stepdad'},
+    { from: 4, to: 12, label: 'Sisters (Other) Mum'},
+    { from: 4, to: 14, label: 'Enemy'},
+    { from: 4, to: 15, label: 'Frenemie turned Friend'},
     { from: 5, to: 1, label: 'Best Friend'},
     { from: 5, to: 2, label: 'Best Friend'},
     { from: 5, to: 3, label: 'sorta Mentor'},
@@ -60,6 +80,10 @@ const edges = new vis.DataSet([
     { from: 5, to: 8, label: 'Acquaintance'},
     { from: 5, to: 9, label: 'Who Even Knows'},
     { from: 5, to: 10, label: 'Acquaintance'},
+    { from: 5, to: 11, label: 'Bully'},
+    { from: 5, to: 12, label: 'Caretaker'},
+    { from: 5, to: 14, label: 'Enemy'},
+    { from: 5, to: 15, label: 'Enemy turned Ally'},
     { from: 6, to: 1, label: 'Best Friend'},
     { from: 6, to: 2, label: 'Best Friend'},
     { from: 6, to: 3, label: 'sorta Mentor'},
@@ -69,6 +93,10 @@ const edges = new vis.DataSet([
     { from: 6, to: 8, label: 'Acquaintance'},
     { from: 6, to: 9, label: 'Who Even Knows'},
     { from: 6, to: 10, label: 'Acquaintance'},
+    { from: 6, to: 11, label: 'Bully'},
+    { from: 6, to: 12, label: 'Caretaker'},
+    { from: 6, to: 14, label: 'Enemy'},
+    { from: 6, to: 15, label: 'Enemy turned Ally'},
     { from: 7, to: 1, label: 'Sister'},
     { from: 7, to: 2, label: 'Good Friend'},
     { from: 7, to: 3, label: 'Close Family Friend'},
@@ -78,6 +106,11 @@ const edges = new vis.DataSet([
     { from: 7, to: 8, label: 'Rival turned Allie'},
     { from: 7, to: 9, label: 'Who Even Knows'},
     { from: 7, to: 10, label: 'Acquaintance'},
+    { from: 7, to: 11, label: 'Enemy'},
+    { from: 7, to: 12, label: 'Adoptive Mum'},
+    { from: 7, to: 13, label: 'Grimwalker Template/Ancestor'},
+    { from: 7, to: 14, label: '"Uncle" turned Enemy'},
+    { from: 7, to: 15, label: 'Enemy turned Ally'},
     { from: 8, to: 1, label: 'Niece'},
     { from: 8, to: 2, label: 'Nieces Girlfriend'},
     { from: 8, to: 3, label: 'Sister'},
@@ -87,24 +120,81 @@ const edges = new vis.DataSet([
     { from: 8, to: 7, label: 'Rival turned Allie', arrows:'to'},
     { from: 8, to: 9, label: 'Best Friend', arrows:'to'},
     { from: 8, to: 10, label: 'Friend / Sisters Boyfriend'},
-    { from: 9, to: 1, label: 'Best Friend'},
-    { from: 9, to: 2, label: 'Best Friend'},
-    { from: 9, to: 3, label: 'Best Friend'},
-    { from: 9, to: 4, label: 'Best Friend'},
-    { from: 9, to: 5, label: 'Best Friend'},
-    { from: 9, to: 6, label: 'Best Friend'},
-    { from: 9, to: 7, label: 'Best Friend'},
-    { from: 9, to: 8, label: 'Best Friend'},
-    { from: 9, to: 10, label: 'Best Friend'},
+    { from: 8, to: 12, label: 'Acquaintance'},
+    { from: 8, to: 13, label: 'Ancestor'},
+    { from: 8, to: 14, label: 'Boss turned Enemy'},
+    { from: 8, to: 15, label: 'Enemy turned Ally'},
+    { from: 9, to: 1, label: 'Friend'},
+    { from: 9, to: 2, label: 'Friend'},
+    { from: 9, to: 3, label: 'Friend'},
+    { from: 9, to: 4, label: 'Friend'},
+    { from: 9, to: 5, label: 'Friend'},
+    { from: 9, to: 6, label: 'Friend'},
+    { from: 9, to: 7, label: 'Friend'},
+    { from: 9, to: 8, label: 'Bestest Friend'},
+    { from: 9, to: 10, label: 'Friend'},
+    { from: 9, to: 12, label: 'Friend'},
+    { from: 9, to: 14, label: 'Enemy'},
+    { from: 9, to: 15, label: 'Enemy turned Ally'},
     { from: 10, to: 1, label: 'Stepdaughter'},
     { from: 10, to: 2, label: 'Stepdaughters Girlfriend'},
-    { from: 10, to: 3, label: 'Girlfriend', arrows:'to'},
-    { from: 10, to: 4, label: 'Acquaintance', arrows:'to'},
-    { from: 10, to: 5, label: 'Acquaintance', arrows:'to'},
+    { from: 10, to: 3, label: 'Girlfriend'},
+    { from: 10, to: 4, label: 'Acquaintance'},
+    { from: 10, to: 5, label: 'Acquaintance'},
     { from: 10, to: 6, label: 'Acquaintance'},
     { from: 10, to: 7, label: 'Acquaintance'},
     { from: 10, to: 8, label: 'Acquaintance'},
-    { from: 10, to: 9, label: 'Acquaintance'}
+    { from: 10, to: 9, label: 'Acquaintance'},
+    { from: 10, to: 12, label: 'Stepdaughters Mum'},
+    { from: 10, to: 14, label: 'Boss turned Enemy'},
+    { from: 10, to: 15, label: 'Enemy turned Ally'},
+    { from: 11, to: 1, label: 'Annoying Nerd'},
+    { from: 11, to: 2, label: 'Ex-Friend'},
+    { from: 11, to: 4, label: 'Annoying Dog-thing'},
+    { from: 11, to: 5, label: 'Half a Witch'},
+    { from: 11, to: 6, label: 'Annoying Nerd'},
+    { from: 11, to: 14, label: 'Leader turned Villain'},
+    { from: 11, to: 15, label: 'Villain'},
+    { from: 12, to: 1, label: 'Daughter'},
+    { from: 12, to: 2, label: 'Daughters Girlfriend'},
+    { from: 12, to: 3, label: 'Mum Friend'},
+    { from: 12, to: 4, label: 'Family'},
+    { from: 12, to: 5, label: 'Daughters Friend'},
+    { from: 12, to: 6, label: 'Daughters Friend'},
+    { from: 12, to: 7, label: 'Adopted Son'},
+    { from: 12, to: 8, label: 'Acquaintance'},
+    { from: 12, to: 9, label: 'Who Even Knows'},
+    { from: 12, to: 10, label: 'Acquaintance'},
+    { from: 12, to: 14, label: 'Enemy'},
+    { from: 12, to: 15, label: 'Enemy turned Ally'},
+    { from: 13, to: 3, label: 'Descendant'},
+    { from: 13, to: 7, label: 'Copy'},
+    { from: 13, to: 8, label: 'Descendant'},
+    { from: 13, to: 14, label: 'Brother turned Enemy'},
+    { from: 14, to: 1, label: 'Enemy'},
+    { from: 14, to: 2, label: 'Enemy'},
+    { from: 14, to: 3, label: 'Enemy'},
+    { from: 14, to: 4, label: 'Enemy'},
+    { from: 14, to: 5, label: 'Enemy'},
+    { from: 14, to: 6, label: 'Enemy'},
+    { from: 14, to: 7, label: '"Nephew" turned Enemy'},
+    { from: 14, to: 8, label: 'Subbordinate turned Enemy'},
+    { from: 14, to: 10, label: 'Subbordinate turned Enemy'},
+    { from: 14, to: 13, label: 'Brother'},
+    { from: 14, to: 15, label: 'Piece of a Puzzle'},
+    { from: 15, to: 1, label: 'Plaything'},
+    { from: 15, to: 2, label: 'Plaything'},
+    { from: 15, to: 3, label: 'Plaything'},
+    { from: 15, to: 4, label: 'Best Friend'},
+    { from: 15, to: 5, label: 'Plaything'},
+    { from: 15, to: 6, label: 'Plaything'},
+    { from: 15, to: 7, label: 'Plaything'},
+    { from: 15, to: 8, label: 'Plaything'},
+    { from: 15, to: 9, label: 'Plaything'},
+    { from: 15, to: 10, label: 'Plaything'},
+    { from: 15, to: 11, label: 'Plaything'},
+    { from: 15, to: 12, label: 'Plaything'},
+    { from: 15, to: 14, label: 'Friend turned Enemy'}
 
 ]);
 
@@ -112,6 +202,7 @@ const edges = new vis.DataSet([
 const centerNodes = nodes.get({ filter: n => n.color === '#75fadb' }); 
 const middleNodes = nodes.get({ filter: n => n.color === '#fa75ef' }); 
 const outerNodes  = nodes.get({ filter: n => n.color === '#ff5454' }); 
+const outerOuterNodes = nodes.get({ filter: n => n.color === '#4bd16f' });
 
 function arrangeInCircle(nodeGroup, radius) {
   const angleStep = (2 * Math.PI) / nodeGroup.length;
@@ -125,6 +216,7 @@ function arrangeInCircle(nodeGroup, radius) {
 arrangeInCircle(centerNodes, 150); 
 arrangeInCircle(middleNodes, 550); 
 arrangeInCircle(outerNodes,  850); 
+arrangeInCircle(outerOuterNodes, 1150);
 
 // 4. Initialize Network
 const container = document.getElementById('character-web');
@@ -179,7 +271,7 @@ nodes.forEach(node => {
   // Create the checkbox
   const checkbox = document.createElement('input');
   checkbox.type = 'checkbox';
-  checkbox.checked = true; // Make them all checked by default
+  checkbox.checked = !node.hidden; // Make them all checked by default
   
   // Listen for clicks on the checkbox
   checkbox.addEventListener('change', (event) => {
@@ -260,5 +352,21 @@ themeToggleBtn.addEventListener('click', () => {
         font: { color: '#ffffff' }
       }
     });
+  }
+});
+
+// 8. --- LEGEND COLLAPSE LOGIC ---
+const legendHeader = document.getElementById('legend-header');
+const legendContent = document.getElementById('legend-content');
+const legendArrow = document.getElementById('legend-arrow');
+
+legendHeader.addEventListener('click', () => {
+  legendContent.classList.toggle('collapsed');
+  
+  // Flips the arrow upside down when collapsed
+  if (legendContent.classList.contains('collapsed')) {
+    legendArrow.className = 'fa-solid fa-chevron-down';
+  } else {
+    legendArrow.className = 'fa-solid fa-chevron-up';
   }
 });

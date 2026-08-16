@@ -137,3 +137,70 @@ body.light-mode #sidebar-toggle:hover,
 body.light-mode #theme-toggle:hover {
   background-color: #d0d0d0;
 }
+
+/* --- NEW LEGEND STYLES --- */
+#legend {
+  position: absolute;
+  bottom: 20px;
+  left: 270px; /* Sits 20px to the right of the 250px sidebar */
+  z-index: 50;
+  background-color: rgba(17, 17, 17, 0.75); /* Mostly transparent */
+  backdrop-filter: blur(4px); /* Adds a nice frosted glass effect */
+  color: #ffffff;
+  border: 1px solid #444;
+  border-radius: 8px;
+  padding: 15px;
+  width: 200px;
+  transition: left 0.3s ease-in-out;
+  font-family: 'Nunito', sans-serif;
+}
+
+/* Magically slides the legend over when the sidebar collapses! */
+#sidebar.collapsed ~ #legend {
+  left: 20px; 
+}
+
+#legend-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+}
+
+#legend-content {
+  transition: max-height 0.3s ease-in-out, margin-top 0.3s ease-in-out;
+  overflow: hidden;
+  max-height: 200px; /* Big enough to hold the rows */
+  margin-top: 10px;
+}
+
+#legend-content.collapsed {
+  max-height: 0;
+  margin-top: 0;
+}
+
+.legend-row {
+  margin-bottom: 8px;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+}
+
+.legend-row:last-child {
+  margin-bottom: 0;
+}
+
+.color-box {
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  border-radius: 4px;
+  margin-right: 10px;
+}
+
+/* Light mode support for the legend */
+body.light-mode #legend {
+  background-color: rgba(238, 238, 238, 0.85);
+  color: #111111;
+  border-color: #cccccc;
+}
