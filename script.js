@@ -226,7 +226,7 @@ const options = {
   nodes: {
     font: { face: 'Nunito', color: '#212121', strokeWidth: 0 },
     shape: 'box',
-    shapeProperities: {
+    shapeProperties: {
         borderRadius: 8
     }
   },
@@ -417,4 +417,13 @@ searchInput.addEventListener('input', (e) => {
       });
     }
   }
+});
+
+// 11. --- FIX FONT LOADING ISSUE ---
+document.fonts.ready.then(() => {
+  network.setOptions({
+    nodes: {
+      font: { face: 'Nunito' }
+    }
+  });
 });

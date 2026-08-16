@@ -29,3 +29,11 @@ I got my list of characters from [The Owl House Wiki](https://theowlhouse.fandom
 * Native app support
 * Image gallery (with hyperlinks from the character to their position in the web)
 * Better graphics
+
+## Acknowledgements & Third-Party Licenses
+
+This project utilizes the following third-party open-source assets and libraries:
+
+*   **[Google Fonts](https://fonts.google.com/)** - Used for all the fonts in the project. Distributed under the [SIL Open Font License 1.1](https://openfontlicense.org).
+*   **[Font Awesome Free](https://fontawesome.com)** - Used for user interface icons. The icons are licensed under [CC BY 4.0](https://creativecommons.org), and code under the [MIT License](https://opensource.org). 
+*   **[vis-network](https://github.com/visjs/vis-network)** - Used for network graph data visualizations. Licensed under the [MIT License](https://github.com/visjs/vis-network/blob/master/LICENSE-MIT) and Apache License 2.0. Copyright (c) 2010-2026 visjs.

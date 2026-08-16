@@ -1,3 +1,18 @@
+@font-face {
+  font-family: 'Josefin Sans';
+  src: url('./fonts/Josefin\ Sans.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Nunito';
+  src: url('./fonts/Nunito.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Roboto Slab';
+  src: url('./fonts/RobotoSlab.ttf') format('truetype');
+}
+
 body {
   font-family: 'Nunito', sans-serif;
   margin: 0;
