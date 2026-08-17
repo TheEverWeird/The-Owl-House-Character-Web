@@ -1,25 +1,25 @@
 // 1. Define nodes (characters)
 const nodes = new vis.DataSet([
-  { id: 1, label: 'Luz', color: '#75fadb' },
-  { id: 2, label: 'Amity', color: '#fa75ef' },
-  { id: 3, label: 'Eda', color: '#75fadb' },
-  { id: 4, label: 'King', color: '#75fadb' },
-  { id: 5, label: 'Willow', color: '#fa75ef' },
-  { id: 6, label: 'Gus', color: '#fa75ef' },
-  { id: 7, label: 'Hunter', color: '#fa75ef' },
-  { id: 8, label: 'Lilith', color: '#fa75ef', hidden: true },
-  { id: 9, label: 'Hooty', color: '#fa75ef', hidden: true },
-  { id: 10, label: 'Raine', color: '#fa75ef', hidden: true},
-  { id: 11, label: 'Boscha', color: '#ff5454', hidden: true},
-  { id: 12, label: 'Camila', color: '#fa75ef', hidden: true},
-  { id: 13, label: 'Caleb Wittebane', color: '#ff5454', widthConstraint: { minimum: 115 }},
-  { id: 14, label: 'Belos (Philip Wittebane)', color: '#75fadb', widthConstraint: { minimum: 125 }},
-  { id: 15, label: 'The Collector', color: '#75fadb', hidden: true},
-  { id: 16, label: 'Edric', color: '#ff5454', hidden: true},
-  { id: 17, label: 'Emira', color: '#ff5454', hidden: true},
-  { id: 18, label: 'Alador', color: '#ff5454', hidden: true},
-  { id: 19, label: 'Odalia', color: '#ff5454', hidden: true},
-  { id: 20, label: 'Darius', color: '#ff5454', hidden: true}
+  { id: 1, label: 'Luz', color: '#75fadb', coven: 'Bad Girl Coven', group: 'Hexsquad' },
+  { id: 2, label: 'Amity', color: '#fa75ef', coven: 'Abomination Coven', group: 'Hexsquad' },
+  { id: 3, label: 'Eda', color: '#75fadb', coven: 'Bad Girl Coven', group: 'C.A.T.S' },
+  { id: 4, label: 'King', color: '#75fadb', coven: 'Bad Girl Coven', group: 'C.A.T.S' },
+  { id: 5, label: 'Willow', color: '#fa75ef', coven: 'Plant Coven', group: 'Hexsquad' },
+  { id: 6, label: 'Gus', color: '#fa75ef', coven: 'Illusion Coven', group: 'Hexsquad' },
+  { id: 7, label: 'Hunter', color: '#fa75ef', coven: "The Emperor's Coven", group: 'Hexsquad' },
+  { id: 8, label: 'Lilith', color: '#fa75ef', hidden: true, coven: "The Emperor's Coven", group: 'C.A.T.S' },
+  { id: 9, label: 'Hooty', color: '#fa75ef', hidden: true, coven: 'Bad Girl Coven' },
+  { id: 10, label: 'Raine', color: '#fa75ef', hidden: true, coven: 'Bard Coven', group: 'C.A.T.S' },
+  { id: 11, label: 'Boscha', color: '#ff5454', hidden: true, coven: 'Potions Coven' },
+  { id: 12, label: 'Camila', color: '#fa75ef', hidden: true },
+  { id: 13, label: 'Caleb Wittebane', color: '#ff5454', widthConstraint: { minimum: 115 } },
+  { id: 14, label: 'Belos (Philip Wittebane)', color: '#75fadb', widthConstraint: { minimum: 125 }, coven: "The Emperor's Coven" },
+  { id: 15, label: 'The Collector', color: '#75fadb', hidden: true },
+  { id: 16, label: 'Edric', color: '#ff5454', hidden: true, coven: 'Illusion Coven' },
+  { id: 17, label: 'Emira', color: '#ff5454', hidden: true, coven: 'Illusion Coven' },
+  { id: 18, label: 'Alador', color: '#ff5454', hidden: true, coven: 'Abomination Coven' },
+  { id: 19, label: 'Odalia', color: '#ff5454', hidden: true, coven: 'Oracle Coven' },
+  { id: 20, label: 'Darius', color: '#ff5454', hidden: true, coven: 'Abomination Coven', group: 'C.A.T.S' }
 ]);
 
 // 2. Define edges (Relationships) - Paste your full list of edges here!
@@ -392,23 +392,18 @@ const togglesContainer = document.getElementById('toggles');
 
 // Loop through all nodes and create a checkbox for each
 nodes.forEach(node => {
-  // Create a label wrapper
   const label = document.createElement('label');
   label.className = 'toggle-row';
   
-  // Create the checkbox
   const checkbox = document.createElement('input');
   checkbox.type = 'checkbox';
-  checkbox.checked = !node.hidden; // Make them all checked by default
+  checkbox.checked = !node.hidden;
+  checkbox.setAttribute('data-id', node.id); // <-- NEW: Ties checkbox to node ID
   
-  // Listen for clicks on the checkbox
   checkbox.addEventListener('change', (event) => {
-    // If unchecked, set 'hidden' to true. If checked, set 'hidden' to false.
-    // (vis-network automatically hides all connected edges when a node is hidden!)
     nodes.update({ id: node.id, hidden: !event.target.checked });
   });
 
-  // Put it all together and add it to the sidebar
   label.appendChild(checkbox);
   label.appendChild(document.createTextNode(node.label));
   togglesContainer.appendChild(label);
@@ -433,9 +428,9 @@ btnSelectAll.addEventListener('click', () => {
   const checkboxes = document.querySelectorAll('#toggles input[type="checkbox"]');
   checkboxes.forEach(cb => cb.checked = true);
   
-  // 2. Tell the graph to show everyone
+  // 2. Tell the graph to show everyone (and remember their color!)
   nodes.forEach(node => {
-    nodes.update({ id: node.id, hidden: false });
+    nodes.update({ id: node.id, hidden: false, color: node.color }); 
   });
 });
 
@@ -444,9 +439,9 @@ btnHideAll.addEventListener('click', () => {
   const checkboxes = document.querySelectorAll('#toggles input[type="checkbox"]');
   checkboxes.forEach(cb => cb.checked = false);
   
-  // 2. Tell the graph to hide everyone
+  // 2. Tell the graph to hide everyone (and remember their color!)
   nodes.forEach(node => {
-    nodes.update({ id: node.id, hidden: true });
+    nodes.update({ id: node.id, hidden: true, color: node.color });
   });
 });
 
@@ -553,5 +548,172 @@ document.fonts.ready.then(() => {
     nodes: {
       font: { face: 'Nunito' }
     }
+  });
+});
+
+// 12. --- SETTINGS MENU LOGIC ---
+const settingsToggleBtn = document.getElementById('settings-toggle');
+const settingsModal = document.getElementById('settings-modal');
+const closeSettingsBtn = document.getElementById('close-settings');
+
+// Open the menu
+settingsToggleBtn.addEventListener('click', () => {
+  settingsModal.classList.remove('hidden');
+});
+
+// Close the menu by clicking the X
+closeSettingsBtn.addEventListener('click', () => {
+  settingsModal.classList.add('hidden');
+});
+
+// Close the menu by clicking anywhere outside the box
+settingsModal.addEventListener('click', (e) => {
+  if (e.target === settingsModal) {
+    settingsModal.classList.add('hidden');
+  }
+});
+
+// Physics Toggle Control
+const togglePhysics = document.getElementById('toggle-physics');
+togglePhysics.addEventListener('change', (e) => {
+  if (e.target.checked) {
+    // 1. Wipe the manual X and Y coordinates so physics can take over
+    const resetPositions = nodes.get().map(node => ({
+      id: node.id,
+      x: undefined,
+      y: undefined
+    }));
+    nodes.update(resetPositions);
+
+    // 2. Turn on physics with stronger repulsion to prevent the "big ball"
+    network.setOptions({
+      physics: {
+        enabled: true,
+        barnesHut: {
+          gravitationalConstant: -20000, // Pushes nodes further apart
+          springLength: 250              // Makes the connecting edges longer
+        }
+      }
+    });
+  } else {
+    // 1. Turn physics back off
+    network.setOptions({ physics: false });
+
+    // 2. Snap everyone back into their perfect circles!
+    arrangeInCircle(centerNodes, 150); 
+    arrangeInCircle(middleNodes, 550); 
+    arrangeInCircle(outerNodes,  850); 
+    arrangeInCircle(outerOuterNodes, 1150);
+  }
+});
+
+// Edge Labels Toggle Control
+const toggleEdgeLabels = document.getElementById('toggle-edge-labels');
+toggleEdgeLabels.addEventListener('change', (e) => {
+  if (e.target.checked) {
+    // Show labels by restoring default font size
+    network.setOptions({
+      edges: { font: { size: 14 } }
+    });
+  } else {
+    // Hide labels by making them size 0
+    network.setOptions({
+      edges: { font: { size: 0 } }
+    });
+  }
+});
+
+// 13. --- FACTION & GROUP FILTERS ---
+const filterHeader = document.getElementById('filter-header');
+const filterContent = document.getElementById('filter-content');
+const filterArrow = document.getElementById('filter-arrow');
+
+filterHeader.addEventListener('click', () => {
+  filterContent.classList.toggle('collapsed');
+  filterArrow.className = filterContent.classList.contains('collapsed') 
+    ? 'fa-solid fa-chevron-down' 
+    : 'fa-solid fa-chevron-up';
+});
+
+const covenList = [
+  "The Emperor's Coven", "Abomination Coven", "Bard Coven", "Beast Keeping Coven", "Construction Coven", 
+  "Healing Coven", "Illusion Coven", "Oracle Coven", "Plant Coven", "Potions Coven", "Artist Coven", 
+  "Bakers Coven", "Big Dog Coven", "Cantrip Coven", "Carnivorous Plant Coven", "Cat Coven", "Chef's Coven", 
+  "Cooking Coven", "Debate Coven", "Fashion Coven", "Flower Coven", "History Coven", "Incidental Coven", 
+  "Meditation Coven", "Menders Coven", "Oculus Coven", "Pickup Coven", "Pottery Coven", "Prose Coven", 
+  "Reaction Coven", "Scrying Coven", "Small Cat Coven", "Stylist Coven", "Succulent Coven", "Tiniest Cat Coven", 
+  "Tiny Cat Coven", "Wood Coven", "Swag Coven", "Bad Girl Coven"
+];
+const groupList = ["C.A.T.S", "Hexsquad"];
+
+const covenContainer = document.getElementById('coven-buttons');
+const groupContainer = document.getElementById('group-buttons');
+
+// Store the default hidden states so the Reset button knows what to do
+const initialStates = {};
+nodes.forEach(node => {
+  initialStates[node.id] = node.hidden || false;
+});
+
+// Filtering function (Updated to fix the color bug!)
+function applyFilter(filterType, filterValue) {
+  nodes.forEach(node => {
+    const matches = node[filterType] === filterValue;
+    // Passing 'color: node.color' forces vis.js to remember your custom colors
+    nodes.update({ id: node.id, hidden: !matches, color: node.color });
+    
+    const checkbox = document.querySelector(`.toggle-row input[data-id="${node.id}"]`);
+    if (checkbox) checkbox.checked = matches;
+  });
+}
+
+// Generate Coven Buttons with Icons and Tooltips
+covenList.forEach(coven => {
+  const btn = document.createElement('button');
+  btn.className = 'filter-btn coven-btn'; // Adds the new square class
+  btn.title = coven; // This creates the hover tooltip!
+  
+  // Create the image element
+  const icon = document.createElement('img');
+  // Format the file path (see instructions below)
+  icon.src = `./img/covens/${coven}.png`; 
+  icon.alt = coven;
+
+  // Fallback text just in case the image hasn't been added yet
+  const fallbackText = document.createElement('span');
+  fallbackText.textContent = coven;
+
+  // NEW: If the image is missing, hide the broken icon and show the text
+  icon.onerror = () => {
+    icon.style.display = 'none'; 
+    fallbackText.style.display = 'block'; 
+  };
+
+  btn.appendChild(icon);
+  btn.appendChild(fallbackText);
+  btn.addEventListener('click', () => applyFilter('coven', coven));
+  covenContainer.appendChild(btn);
+});
+
+// Generate Group Buttons (Kept as normal text buttons)
+groupList.forEach(group => {
+  const btn = document.createElement('button');
+  btn.className = 'filter-btn';
+  btn.textContent = group;
+  btn.addEventListener('click', () => applyFilter('group', group));
+  groupContainer.appendChild(btn);
+});
+
+// Reset Filters Logic
+const btnResetFilters = document.getElementById('btn-reset-filters');
+btnResetFilters.addEventListener('click', () => {
+  nodes.forEach(node => {
+    // Revert to the exact hidden state they had when the page loaded
+    const isHidden = initialStates[node.id];
+    nodes.update({ id: node.id, hidden: isHidden, color: node.color });
+    
+    // Update the sidebar checkboxes to match
+    const checkbox = document.querySelector(`.toggle-row input[data-id="${node.id}"]`);
+    if (checkbox) checkbox.checked = !isHidden;
   });
 });

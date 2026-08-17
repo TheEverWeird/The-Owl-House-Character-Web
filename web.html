@@ -24,6 +24,32 @@
   <button id="theme-toggle" title="Toggle Theme">
     <i class="fa-solid fa-sun"></i>
   </button>
+  <!-- NEW: Settings Button -->
+  <button id="settings-toggle" title="Open Settings">
+    <i class="fa-solid fa-gear"></i>
+  </button>
+
+  <!-- NEW: Settings Modal -->
+  <div id="settings-modal" class="hidden">
+    <div class="settings-content">
+      <div class="settings-header">
+        <h3>Settings</h3>
+        <i class="fa-solid fa-xmark" id="close-settings"></i>
+      </div>
+      <div class="settings-options">
+        <label class="setting-row">
+          <span>Enable Physics</span>
+          <!-- Unchecked by default -->
+          <input type="checkbox" id="toggle-physics">
+        </label>
+        <label class="setting-row">
+          <span>Show Edge Labels</span>
+          <!-- Checked by default -->
+          <input type="checkbox" id="toggle-edge-labels" checked>
+        </label>
+      </div>
+    </div>
+  </div>
 
   <div id="sidebar">
     <h2>The Owl House Character Web</h2>
@@ -36,10 +62,25 @@
 
     <h3>Characters</h3>
     
+    <!-- NEW: Faction & Group Filters -->
+    <div id="filter-section">
+      <div id="filter-header">
+        <h4 style="margin: 0;">Factions & Groups</h4>
+        <i class="fa-solid fa-chevron-down" id="filter-arrow"></i>
+      </div>
+      <div id="filter-content" class="collapsed">
+        <h5>Covens</h5>
+        <div id="coven-buttons" class="grid-3"></div>
+        <h5>Groups</h5>
+        <div id="group-buttons" class="grid-2"></div>
+      </div>
+    </div>
+
     <div class="button-group">
       <button id="btn-select-all">Select All</button>
       <button id="btn-hide-all">Hide All</button>
     </div>
+    <button id="btn-reset-filters">Reset Filters</button>
 
     <div id="toggles"></div>
   </div>
