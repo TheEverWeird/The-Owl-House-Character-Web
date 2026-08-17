@@ -398,10 +398,11 @@ nodes.forEach(node => {
   const checkbox = document.createElement('input');
   checkbox.type = 'checkbox';
   checkbox.checked = !node.hidden;
-  checkbox.setAttribute('data-id', node.id); // <-- NEW: Ties checkbox to node ID
+  checkbox.setAttribute('data-id', node.id);
   
+  // Explicitly passing node.color prevents vis.js from resetting group-tagged node colors
   checkbox.addEventListener('change', (event) => {
-    nodes.update({ id: node.id, hidden: !event.target.checked });
+    nodes.update({ id: node.id, hidden: !event.target.checked, color: node.color });
   });
 
   label.appendChild(checkbox);
