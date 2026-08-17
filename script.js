@@ -337,7 +337,7 @@ function arrangeInCircle(nodeGroup, radius) {
   nodeGroup.forEach((node, index) => {
     const xPos = radius * Math.cos(angleStep * index);
     const yPos = radius * Math.sin(angleStep * index);
-    nodes.update({ id: node.id, x: xPos, y: yPos });
+    nodes.update({ id: node.id, x: xPos, y: yPos, color: node.color });
   });
 }
 
@@ -577,11 +577,12 @@ settingsModal.addEventListener('click', (e) => {
 const togglePhysics = document.getElementById('toggle-physics');
 togglePhysics.addEventListener('change', (e) => {
   if (e.target.checked) {
-    // 1. Wipe the manual X and Y coordinates so physics can take over
+    // 1. Wipe the manual X and Y coordinates (and force vis.js to remember node colors!)
     const resetPositions = nodes.get().map(node => ({
       id: node.id,
       x: undefined,
-      y: undefined
+      y: undefined,
+      color: node.color
     }));
     nodes.update(resetPositions);
 
