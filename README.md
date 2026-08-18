@@ -12,7 +12,7 @@ I have added filters for every coven, as well as the C.A.T.S. and the Hexsquad, 
 The characters I've added can be seen [here](./added%20character%20list.md).
 
 # Planned Features
-* Native app support
+* Native app support (add auto dark mode)
 * Make it look better
 * Image gallery (with hyperlinks from the character to their position in the web)
 
