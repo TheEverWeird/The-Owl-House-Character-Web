@@ -3,13 +3,11 @@ This is an interactive character web for all the characters in The Owl House, ma
 
 **This is still in a sorta early beta!!** Once I've added all the characters I'm and made it better I'll probably say it's a "finished product" but still add more stuff to it :D
 
-So far this includes 20 characters, listed below, links between every character going both ways to accommodate for each characters view, a collapsable sidebar with the option to hide each character and their links, and a light mode toggle. Read the links as that it's the view of the character the arrow is going to from the character the arrow is coming from. I appologise for how convoluted that makes it sound 😭
+This includes 100 characters, listed [here](./added%20character%20list.md), links between most characters going both ways to accommodate for each characters view, a collapsable sidebar with the option to hide each character and their links, and a light mode toggle. Read the links as that it's the view of the character the arrow is going to from the character the arrow is coming from. I appologise for how convoluted that makes it sound 😭
 
 Each character's node is coloured based on whether they're a main character, main side character, supporting side character, and minor side/background character.
 
 I have added filters for every coven, as well as the C.A.T.S. and the Hexsquad, though most covens do not have any members. The coven filters also apply to what track students studied.
-
-The characters I've added can be seen [here](./added%20character%20list.md).
 
 # Planned Features/Fixes
 * Add auto dark mode
