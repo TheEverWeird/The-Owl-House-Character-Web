@@ -7,7 +7,7 @@ So far this includes 20 characters, listed below, links between every character 
 
 Each character's node is coloured based on whether they're a main character, main side character, supporting side character, and minor side/background character.
 
-I have added filters for every coven, as well as the C.A.T.S. and the Hexsquad, though most covens do not have any of the members added yet.
+I have added filters for every coven, as well as the C.A.T.S. and the Hexsquad, though most covens do not have any members. The coven filters also apply to what track students studied.
 
 The characters I've added can be seen [here](./added%20character%20list.md).
 

@@ -1,26 +1,13 @@
 // 1. Define nodes (characters)
-const nodes = new vis.DataSet([
-  { id: 1, label: 'Luz', color: '#75fadb', coven: 'Bad Girl Coven', group: 'Hexsquad' },
-  { id: 2, label: 'Amity', color: '#fa75ef', coven: 'Abomination Coven', group: 'Hexsquad' },
-  { id: 3, label: 'Eda', color: '#75fadb', coven: 'Bad Girl Coven', group: 'C.A.T.S' },
-  { id: 4, label: 'King', color: '#75fadb', coven: 'Bad Girl Coven', group: 'C.A.T.S' },
-  { id: 5, label: 'Willow', color: '#fa75ef', coven: 'Plant Coven', group: 'Hexsquad' },
-  { id: 6, label: 'Gus', color: '#fa75ef', coven: 'Illusion Coven', group: 'Hexsquad' },
-  { id: 7, label: 'Hunter', color: '#fa75ef', coven: "The Emperor's Coven", group: 'Hexsquad' },
-  { id: 8, label: 'Lilith', color: '#fa75ef', hidden: true, coven: "The Emperor's Coven", group: 'C.A.T.S' },
-  { id: 9, label: 'Hooty', color: '#fa75ef', hidden: true, coven: 'Bad Girl Coven' },
-  { id: 10, label: 'Raine', color: '#fa75ef', hidden: true, coven: 'Bard Coven', group: 'C.A.T.S' },
-  { id: 11, label: 'Boscha', color: '#ff5454', hidden: true, coven: 'Potions Coven' },
-  { id: 12, label: 'Camila', color: '#fa75ef', hidden: true },
-  { id: 13, label: 'Caleb Wittebane', color: '#ff5454', widthConstraint: { minimum: 115 } },
-  { id: 14, label: 'Belos (Philip Wittebane)', color: '#75fadb', widthConstraint: { minimum: 125 }, coven: "The Emperor's Coven" },
-  { id: 15, label: 'The Collector', color: '#75fadb', hidden: true },
-  { id: 16, label: 'Edric', color: '#ff5454', hidden: true, coven: 'Illusion Coven' },
-  { id: 17, label: 'Emira', color: '#ff5454', hidden: true, coven: 'Illusion Coven' },
-  { id: 18, label: 'Alador', color: '#ff5454', hidden: true, coven: 'Abomination Coven' },
-  { id: 19, label: 'Odalia', color: '#ff5454', hidden: true, coven: 'Oracle Coven' },
-  { id: 20, label: 'Darius', color: '#ff5454', hidden: true, coven: 'Abomination Coven', group: 'C.A.T.S' }
-]);
+const visibleIds = [1, 2, 3, 4, 5, 6, 7, 13, 14];
+
+// Set hidden: true for any character NOT in the list
+const formattedNodes = nodesData.map(node => ({
+  ...node,
+  hidden: !visibleIds.includes(node.id)
+}));
+
+const nodes = new vis.DataSet(formattedNodes);
 
 // 2. Define edges (Relationships) - Paste your full list of edges here!
 const edges = new vis.DataSet([
@@ -646,7 +633,7 @@ const covenList = [
   "Reaction Coven", "Scrying Coven", "Small Cat Coven", "Stylist Coven", "Succulent Coven", "Tiniest Cat Coven", 
   "Tiny Cat Coven", "Wood Coven", "Swag Coven", "Bad Girl Coven"
 ];
-const groupList = ["C.A.T.S", "Hexsquad"];
+const groupList = ["C.A.T.S", "Hexsquad", "Titan Trappers"];
 
 const covenContainer = document.getElementById('coven-buttons');
 const groupContainer = document.getElementById('group-buttons');
@@ -678,7 +665,7 @@ covenList.forEach(coven => {
   // Create the image element
   const icon = document.createElement('img');
   // Format the file path (see instructions below)
-  icon.src = `./img/covens/${coven}.png`; 
+  icon.src = `../img/covens/${coven}.png`; 
   icon.alt = coven;
 
   // Fallback text just in case the image hasn't been added yet
