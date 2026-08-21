@@ -1,8 +1,8 @@
 {
   "name": "toh-web",
-  "version": "0.1",
+  "version": "0.1.0",
   "description": "the owl house character web app",
-  "homepage": "https://github.com/TheEverWeird/The-Owl-House-Character-Web#readme",
+  "homepage": "https://github.com/TheEverWeird/The-Owl-House-Character-Web",
   "bugs": {
     "url": "https://github.com/TheEverWeird/The-Owl-House-Character-Web/issues"
   },
