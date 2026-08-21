@@ -1,0 +1,44 @@
+{
+  "name": "toh-web",
+  "version": "0.1.0",
+  "description": "the owl house character web app",
+  "homepage": "https://github.com/TheEverWeird/The-Owl-House-Character-Web",
+  "bugs": {
+    "url": "https://github.com/TheEverWeird/The-Owl-House-Character-Web/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/TheEverWeird/The-Owl-House-Character-Web.git"
+  },
+  "license": "ISC",
+  "author": "TheEverWeird",
+  "type": "commonjs",
+  "main": "app.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "scripts": {
+    "start": "electron .",
+    "test": "\"echo \\\"Error: no test specified\\\" && exit 1\"",
+    "package": "electron-forge package",
+    "make": "electron-forge make"
+  },
+  "devDependencies": {
+    "@electron-forge/cli": "^7.11.2",
+    "@electron-forge/maker-deb": "^7.11.2",
+    "@electron-forge/maker-dmg": "^7.11.2",
+    "@electron-forge/maker-rpm": "^7.11.2",
+    "@electron-forge/maker-squirrel": "^7.11.2",
+    "@electron-forge/maker-zip": "^7.11.2",
+    "@electron-forge/plugin-auto-unpack-natives": "^7.11.2",
+    "@electron-forge/plugin-fuses": "^7.11.2",
+    "@electron/fuses": "^1.8.0",
+    "electron": "^43.4.0"
+  },
+  "dependencies": {
+    "electron-squirrel-startup": "^1.0.1"
+  },
+  "allowScripts": {
+    "electron-winstaller@5.4.4": true
+  }
+}
