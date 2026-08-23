@@ -158,7 +158,7 @@ const nodesData = [
     "label": "Amber",
     "color": "#4bd16f",
     "coven": "Bard Coven",
-    "group": ""
+    "group": "C.A.T.S"
   },
   {
     "id": 24,
