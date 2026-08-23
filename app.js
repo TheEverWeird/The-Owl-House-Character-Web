@@ -12,7 +12,7 @@ const createWindow = () => {
     height: 720
   });
 
-  win.loadFile(path.join(__dirname, 'index.html'));
+  win.loadFile(path.join(__dirname, './web/index.html'));
 };
 
 app.whenReady().then(() => {
