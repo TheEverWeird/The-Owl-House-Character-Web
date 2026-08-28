@@ -56,7 +56,7 @@ const options = {
       opacity: 0.6     // Slight transparency so the web doesn't look overwhelming
     }, 
     
-    smooth: {
+      smooth: {
       enabled: true,
       type: 'curvedCW', 
       roundness: 0.2    
@@ -113,26 +113,33 @@ const btnSelectAll = document.getElementById('btn-select-all');
 const btnHideAll = document.getElementById('btn-hide-all');
 
 btnSelectAll.addEventListener('click', () => {
-  // 1. Check all the boxes visually
   const checkboxes = document.querySelectorAll('#toggles input[type="checkbox"]');
   checkboxes.forEach(cb => cb.checked = true);
   
-  // 2. Tell the graph to show everyone (and remember their color!)
+  // 1. Build an array of updates behind the scenes
+  const updates = [];
   nodes.forEach(node => {
-    nodes.update({ id: node.id, hidden: false, color: node.color }); 
+    updates.push({ id: node.id, hidden: false, color: node.color }); 
   });
+  
+  // 2. Commit them all in ONE single batch operation
+  nodes.update(updates);
 });
 
 btnHideAll.addEventListener('click', () => {
-  // 1. Uncheck all the boxes visually
   const checkboxes = document.querySelectorAll('#toggles input[type="checkbox"]');
   checkboxes.forEach(cb => cb.checked = false);
   
-  // 2. Tell the graph to hide everyone (and remember their color!)
+  // 1. Build an array of updates behind the scenes
+  const updates = [];
   nodes.forEach(node => {
-    nodes.update({ id: node.id, hidden: true, color: node.color });
+    updates.push({ id: node.id, hidden: true, color: node.color });
   });
+  
+  // 2. Commit them all in ONE single batch operation
+  nodes.update(updates);
 });
+
 
 // 7. --- LIGHT/DARK MODE LOGIC ---
 const themeToggleBtn = document.getElementById('theme-toggle');
@@ -195,17 +202,17 @@ resetViewBtn.addEventListener('click', () => {
   });
 });
 
-// 10. --- LIVE SEARCH & AUTO-ZOOM LOGIC ---
+// 10. --- DEBOUNCED LIVE SEARCH & AUTO-ZOOM LOGIC ---
 const searchInput = document.getElementById('character-search');
+let searchTimeout = null;
 
 searchInput.addEventListener('input', (e) => {
   const searchTerm = e.target.value.toLowerCase().trim();
   const toggleRows = document.querySelectorAll('.toggle-row');
 
+  // Immediate UI sidebar filtering is fine for modern DOM layout engines
   toggleRows.forEach(row => {
     const characterName = row.textContent.toLowerCase();
-    
-    // Filter sidebar list items
     if (characterName.includes(searchTerm)) {
       row.style.display = 'flex';
     } else {
@@ -213,22 +220,25 @@ searchInput.addEventListener('input', (e) => {
     }
   });
 
-  // If exact or close match found, smooth-zoom camera to that character node
-  if (searchTerm.length > 1) {
-    const matchedNode = nodes.get({
-      filter: item => item.label.toLowerCase().includes(searchTerm) && !item.hidden
-    })[0];
+  // Debounce the heavy network engine matching and camera zooming
+  clearTimeout(searchTimeout);
+  searchTimeout = setTimeout(() => {
+    if (searchTerm.length > 1) {
+      const matchedNode = nodes.get({
+        filter: item => item.label.toLowerCase().includes(searchTerm) && !item.hidden
+      })[0];
 
-    if (matchedNode) {
-      network.focus(matchedNode.id, {
-        scale: 1.2,
-        animation: {
-          duration: 800,
-          easingFunction: 'easeInOutQuad'
-        }
-      });
+      if (matchedNode) {
+        network.focus(matchedNode.id, {
+          scale: 1.2,
+          animation: {
+            duration: 500, // Faster duration feels smoother on browsers
+            easingFunction: 'easeInOutQuad'
+          }
+        });
+      }
     }
-  }
+  }, 250); // Waits 250ms until you are done typing
 });
 
 // 11. --- FIX FONT LOADING ISSUE ---
@@ -345,16 +355,19 @@ nodes.forEach(node => {
   initialStates[node.id] = node.hidden || false;
 });
 
-// Filtering function (Updated to fix the color bug!)
+// Filtering function optimized for browser rendering batches
 function applyFilter(filterType, filterValue) {
+  const updates = []; // Array to store all changes
+  
   nodes.forEach(node => {
     const matches = node[filterType] === filterValue;
-    // Passing 'color: node.color' forces vis.js to remember your custom colors
-    nodes.update({ id: node.id, hidden: !matches, color: node.color });
+    updates.push({ id: node.id, hidden: !matches, color: node.color });
     
     const checkbox = document.querySelector(`.toggle-row input[data-id="${node.id}"]`);
     if (checkbox) checkbox.checked = matches;
   });
+  
+  nodes.update(updates); // Pushes all node updates to the canvas in one layout frame
 }
 
 // Generate Coven Buttons with Icons and Tooltips
@@ -397,13 +410,15 @@ groupList.forEach(group => {
 // Reset Filters Logic
 const btnResetFilters = document.getElementById('btn-reset-filters');
 btnResetFilters.addEventListener('click', () => {
+  const updates = []; // Create batch array
+  
   nodes.forEach(node => {
-    // Revert to the exact hidden state they had when the page loaded
     const isHidden = initialStates[node.id];
-    nodes.update({ id: node.id, hidden: isHidden, color: node.color });
+    updates.push({ id: node.id, hidden: isHidden, color: node.color });
     
-    // Update the sidebar checkboxes to match
     const checkbox = document.querySelector(`.toggle-row input[data-id="${node.id}"]`);
     if (checkbox) checkbox.checked = !isHidden;
   });
+  
+  nodes.update(updates); // Push everything concurrently
 });
