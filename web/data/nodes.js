@@ -53,7 +53,7 @@ const nodesData = [
     "label": "Lilith",
     "color": "#fa75ef",
     "coven": "The Emperor's Coven",
-    "group": "Hexsquad"
+    "group": "C.A.T.S"
   },
   {
     "id": 9,
@@ -137,7 +137,7 @@ const nodesData = [
     "label": "Darius",
     "color": "#ff5454",
     "coven": "Abomination Coven",
-    "group": ""
+    "group": "C.A.T.S"
   },
   {
     "id": 21,
@@ -480,7 +480,7 @@ const nodesData = [
     "label": "Steve",
     "color": "#ff5454",
     "coven": "The Emperor's Coven",
-    "group": ""
+    "group": "C.A.T.S"
   },
   {
     "id": 70,
@@ -697,6 +697,13 @@ const nodesData = [
     "label": "The Archivists",
     "color": "#4bd16f",
     "coven": "",
+    "group": ""
+  },
+  {
+    "id": 101,
+    "label": "Vitimir",
+    "color": "#4bd16f",
+    "coven": "Potions Coven",
     "group": ""
   }
 ]
