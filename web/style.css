@@ -626,3 +626,14 @@ body.light-mode #btn-reset-filters:hover {
   object-fit: contain; /* Prevents your icons from getting stretched or squished */
   pointer-events: none; /* Stops the image from blocking the button click */
 }
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+#sidebar::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+#sidebar {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;     /* Firefox */
+}
