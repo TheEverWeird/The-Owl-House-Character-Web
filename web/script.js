@@ -4,7 +4,9 @@ const visibleIds = [1, 2, 3, 4, 5, 6, 7, 13, 14];
 // Set hidden: true for any character NOT in the list
 const formattedNodes = nodesData.map(node => ({
   ...node,
-  hidden: !visibleIds.includes(node.id)
+  hidden: !visibleIds.includes(node.id),
+  filterGroup: node.group, // Save your array/string to a safe custom property
+  group: undefined         // Wipe the reserved property so vis-network doesn't crash
 }));
 
 const nodes = new vis.DataSet(formattedNodes);
@@ -344,7 +346,7 @@ const covenList = [
   "Reaction Coven", "Scrying Coven", "Small Cat Coven", "Stylist Coven", "Succulent Coven", "Tiniest Cat Coven", 
   "Tiny Cat Coven", "Wood Coven", "Swag Coven", "Bad Girl Coven"
 ];
-const groupList = ["C.A.T.S", "Hexsquad", "Titan Trappers"];
+const groupList = ["C.A.T.S", "Hexsquad", "Titan Trappers", "Loyal Coven Heads"];
 
 const covenContainer = document.getElementById('coven-buttons');
 const groupContainer = document.getElementById('group-buttons');
@@ -357,17 +359,23 @@ nodes.forEach(node => {
 
 // Filtering function optimized for browser rendering batches
 function applyFilter(filterType, filterValue) {
-  const updates = []; // Array to store all changes
+  const updates = [];
   
   nodes.forEach(node => {
-    const matches = node[filterType] === filterValue;
+    const property = node[filterType];
+    
+    // Check if the property is an array containing the filter, or an exact string match
+    const matches = Array.isArray(property) 
+      ? property.includes(filterValue) 
+      : property === filterValue;
+
     updates.push({ id: node.id, hidden: !matches, color: node.color });
     
     const checkbox = document.querySelector(`.toggle-row input[data-id="${node.id}"]`);
     if (checkbox) checkbox.checked = matches;
   });
   
-  nodes.update(updates); // Pushes all node updates to the canvas in one layout frame
+  nodes.update(updates);
 }
 
 // Generate Coven Buttons with Icons and Tooltips
@@ -403,7 +411,8 @@ groupList.forEach(group => {
   const btn = document.createElement('button');
   btn.className = 'filter-btn';
   btn.textContent = group;
-  btn.addEventListener('click', () => applyFilter('group', group));
+  // Change the target from 'group' to 'filterGroup'
+  btn.addEventListener('click', () => applyFilter('filterGroup', group)); 
   groupContainer.appendChild(btn);
 });
 

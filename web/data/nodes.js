@@ -4,7 +4,7 @@ const nodesData = [
     "label": "Luz",
     "color": "#75fadb",
     "coven": "Bad Girl Coven",
-    "group": "Hexsquad"
+    "group": ["Hexsquad", "C.A.T.S"]
   },
   {
     "id": 2,
@@ -25,7 +25,7 @@ const nodesData = [
     "label": "King",
     "color": "#75fadb",
     "coven": "Bad Girl Coven",
-    "group": ""
+    "group": "C.A.T.S"
   },
   {
     "id": 5,
@@ -52,7 +52,7 @@ const nodesData = [
     "id": 8,
     "label": "Lilith",
     "color": "#fa75ef",
-    "coven": "The Emperor's Coven",
+    "coven": "The Emperor's Coven", // Coven head
     "group": "C.A.T.S"
   },
   {
@@ -60,14 +60,14 @@ const nodesData = [
     "label": "Hooty",
     "color": "#fa75ef",
     "coven": "Bad Girl Coven",
-    "group": ""
+    "group": "C.A.T.S"
   },
   {
     "id": 10,
     "label": "Raine",
     "color": "#ff5454",
     "coven": "Bard Coven",
-    "group": ""
+    "group": "C.A.T.S"
   },
   {
     "id": 11,
@@ -136,7 +136,7 @@ const nodesData = [
     "id": 20,
     "label": "Darius",
     "color": "#ff5454",
-    "coven": "Abomination Coven",
+    "coven": "Abomination Coven", // Coven head
     "group": "C.A.T.S"
   },
   {
@@ -150,8 +150,8 @@ const nodesData = [
     "id": 22,
     "label": "Adrian",
     "color": "#ff5454",
-    "coven": "Illusion Coven",
-    "group": ""
+    "coven": "Illusion Coven", // Coven head
+    "group": "Loyal Coven Heads"
   },
   {
     "id": 23,
@@ -241,7 +241,7 @@ const nodesData = [
     "id": 35,
     "label": "Eberwolf",
     "color": "#ff5454",
-    "coven": "Beast Keeping Coven",
+    "coven": "Beast Keeping Coven", // Coven head
     "group": "C.A.T.S"
   },
   {
@@ -304,8 +304,8 @@ const nodesData = [
     "id": 44,
     "label": "Hettie",
     "color": "#4bd16f",
-    "coven": "Healing Coven",
-    "group": ""
+    "coven": "Healing Coven", // Coven head
+    "group": "Loyal Coven Heads"
   },
   {
     "id": 45,
@@ -381,8 +381,8 @@ const nodesData = [
     "id": 55,
     "label": "Mason",
     "color": "#4bd16f",
-    "coven": "Construction Coven",
-    "group": ""
+    "coven": "Construction Coven", // Coven head
+    "group": "Loyal Coven Heads"
   },
   {
     "id": 56,
@@ -409,8 +409,8 @@ const nodesData = [
     "id": 59,
     "label": "Osran",
     "color": "#4bd16f",
-    "coven": "Oracle Coven",
-    "group": ""
+    "coven": "Oracle Coven", // Coven head
+    "group": "Loyal Coven Heads"
   },
   {
     "id": 60,
@@ -493,8 +493,8 @@ const nodesData = [
     "id": 71,
     "label": "Terra Snapdragon",
     "color": "#ff5454",
-    "coven": "Plant Coven",
-    "group": ""
+    "coven": "Plant Coven", // Coven head
+    "group": "Loyal Coven Heads"
   },
   {
     "id": 72,
@@ -666,7 +666,7 @@ const nodesData = [
   },
   {
     "id": 96,
-    "label": "Principle Hal",
+    "label": "Principal Hal",
     "color": "#4bd16f",
     "coven": "",
     "group": ""
@@ -703,7 +703,7 @@ const nodesData = [
     "id": 101,
     "label": "Vitimir",
     "color": "#4bd16f",
-    "coven": "Potions Coven",
-    "group": ""
+    "coven": "Potions Coven", // Coven head
+    "group": "Loyal Coven Heads"
   }
 ]
