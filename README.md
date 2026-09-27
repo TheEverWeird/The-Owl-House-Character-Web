@@ -9,6 +9,8 @@ Each character's node is coloured based on whether they're a main character, mai
 
 I have added filters for every coven, as well as the C.A.T.S. and the Hexsquad, though most covens do not have any members. The coven filters also apply to what track students studied.
 
+If you have any suggestions for changes to characters or relationships please make an issue, and if you have suggestions/edits for the code or anything else please make a pull request.
+
 # Planned Features/Fixes
 * Improve performance
 * Add auto dark mode
