@@ -3,12 +3,18 @@ module.exports = {
     asar: true,
     icon: './img/app-icons/icon',
     name: 'The Owl House Character Web',
-    osxSign: {},
-    ignore: [
-      /^\/\.git($|\/)/,
-      /^\/\.github($|\/)/,
-      /^\/out($|\/)/
-    ]
+    executableName: 'toh-web',
+    ignore: (file) => {
+      if (file === '/package.json') return false;
+      if (
+        /^\/\.git($|\/)/.test(file) ||
+        /^\/\.github($|\/)/.test(file) ||
+        /^\/out($|\/)/.test(file)
+      ) {
+        return true;
+      }
+      return false;
+    }
   },
   rebuildConfig: {},
   makers: [
@@ -27,17 +33,37 @@ module.exports = {
       },
     },
     {
+      // FIXED: Separated platforms into individual array elements
       name: '@electron-forge/maker-zip',
-      platforms: ['win32'],
+      platforms: ['win32', 'linux'], 
     },
     {
       name: '@electron-forge/maker-deb',
       config: {},
     },
-    {
-      name: '@electron-forge/maker-rpm',
-      config: {},
-    },
+    // {
+    //   name: '@electron-forge/maker-flatpak',
+    //   config: {
+    //    options: {
+    //      id: 'com.github.theeverweird.the-owl-house-character-web',
+    //      branch: 'stable',
+    //      // FIXED: Using highly compatible LTS baselines recognized by electron-forge
+    //      base: 'org.electronjs.Electron2.BaseApp',
+    //      baseVersion: '23.08',
+    //      runtime: 'org.freedesktop.Platform',
+    //      runtimeVersion: '23.08',
+    //      sdk: 'org.freedesktop.Sdk',
+    //      finishArgs: [
+    //        '--socket=wayland',
+    //        '--socket=fallback-x11',
+    //        '--share=ipc',
+    //        '--share=network',
+    //        '--socket=pulseaudio',
+    //        '--device=dri'
+    //      ]
+    //    }
+    //   }
+    // }
   ],
   plugins: [
     {

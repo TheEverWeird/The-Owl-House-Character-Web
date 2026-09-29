@@ -10,7 +10,8 @@ const createWindow = () => {
   const win = new BrowserWindow({
     width: 1200,
     height: 720,
-    autoHideMenuBar: true
+    autoHideMenuBar: true,
+    icon: path.join(__dirname, './img/app-icons/icon.png'),
   });
 
   win.loadFile(path.join(__dirname, './web/index.html'));
