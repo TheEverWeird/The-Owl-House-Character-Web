@@ -3,7 +3,7 @@ This is an interactive character web for all the characters in The Owl House, ma
 
 **This is still in a sorta early beta!!** Once I've added all the characters I'm and made it better I'll probably say it's a "finished product" but still add more stuff to it :D
 
-This includes 101 characters, listed [here](./character_list.md), links between most characters going both ways to accommodate for each characters view, a collapsable sidebar with the option to hide each character and their links, and a light mode toggle. Read the links as that it's the view of the character the arrow is going to from the character the arrow is coming from. I appologise for how convoluted that makes it sound 😭
+This includes 90 characters, listed [here](./character_list.md), links between most characters going both ways to accommodate for each characters view, a collapsable sidebar with the option to hide each character and their links, and a light mode toggle. Read the links as that it's the view of the character the arrow is going to from the character the arrow is coming from. I appologise for how convoluted that makes it sound 😭
 
 Each character's node is coloured based on whether they're a main character, main side character, supporting side character, and minor side/background character.
 
@@ -14,9 +14,10 @@ If you have any suggestions for changes to characters or relationships please ma
 # Planned Features/Fixes
 * Improve performance
 * Add auto dark mode
-* Remove top menu bar and scroll bar
 * Make it look better
 * Image gallery (with hyperlinks from the character to their position in the web)
+* Incorperate update.electronjs.org
+* Maybe add something with vis-timeline
 
 ## Acknowledgements & Third-Party Licenses
 

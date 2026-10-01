@@ -80,24 +80,11 @@
 * Mary
 * Librarian
 * Jon De Plume
-* Chris
-* Prim
 * Evelyn
 * Illusion Teacher
 * Potion Teacher
 * Detention Teacher
 * Oracle Teacher
 * Unamed H.A.S. Member
-* Bounty Shopkeeper
-* Ulka
-* Ulka's Mother
-* Garlog
-* Abominable Cuitie Pie
-* Green Fang
-* Red Fang
-* Principle Hal
 * Unamed Camp Members
-* Mr. Sandoval
-* Art Teacher
-* The Archivists
 * Vitimir
