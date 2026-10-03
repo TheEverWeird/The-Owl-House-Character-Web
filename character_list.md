@@ -36,12 +36,9 @@
 * Derwin
 * Eberwolf
 * Eileen
-* Eye-Eating Demon
-* Flora D'Splora
 * Gavin
 * Gilbert
 * Harvey
-* Grometheous
 * Gwendolyn
 * Hettie
 * The Inspector
@@ -87,4 +84,22 @@
 * Oracle Teacher
 * Unamed H.A.S. Member
 * Unamed Camp Members
+* The Archivists
 * Vitimir
+
+## Cut Characters
+* Chris
+* Pim
+* Bounty Shopkeeper
+* Ulka
+* Ulka's Mother
+* Garlog
+* Abominible Cutie Pie
+* Green Fang
+* Red Fang
+* Principal Hal
+* Mr. Sandoval
+* Art Teacher
+* Eye-Eating Demon
+* Flora D'Splora
+* Grometheous
