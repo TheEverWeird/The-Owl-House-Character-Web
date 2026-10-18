@@ -13,10 +13,11 @@ If you have any suggestions for changes to characters or relationships please ma
 
 # Planned Features/Fixes
 * Improve performance
+* Make zoom a lot less sensitive
 * Add auto dark mode
 * Make it look better
 * Image gallery (with hyperlinks from the character to their position in the web)
-* Incorperate update.electronjs.org
+* Incorperate update.electronjs.org for Windows and macOS (add a popup on Linux)
 * Maybe add something with vis-timeline
 
 ## Acknowledgements & Third-Party Licenses
