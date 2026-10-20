@@ -338,15 +338,9 @@ filterHeader.addEventListener('click', () => {
 });
 
 const covenList = [
-  "The Emperor's Coven", "Abomination Coven", "Bard Coven", "Beast Keeping Coven", "Construction Coven", 
-  "Healing Coven", "Illusion Coven", "Oracle Coven", "Plant Coven", "Potions Coven", "Artist Coven", 
-  "Bakers Coven", "Big Dog Coven", "Cantrip Coven", "Carnivorous Plant Coven", "Cat Coven", "Chef's Coven", 
-  "Cooking Coven", "Debate Coven", "Fashion Coven", "Flower Coven", "History Coven", "Incidental Coven", 
-  "Meditation Coven", "Menders Coven", "Oculus Coven", "Pickup Coven", "Pottery Coven", "Prose Coven", 
-  "Reaction Coven", "Scrying Coven", "Small Cat Coven", "Stylist Coven", "Succulent Coven", "Tiniest Cat Coven", 
-  "Tiny Cat Coven", "Wood Coven", "Swag Coven", "Bad Girl Coven"
+  "Example Class 1", "Example Class 2", "Example Class 3"
 ];
-const groupList = ["C.A.T.S", "Hexsquad", "Titan Trappers", "Loyal Coven Heads"];
+const groupList = ["Example Group 1", "Example Group 2"];
 
 const covenContainer = document.getElementById('coven-buttons');
 const groupContainer = document.getElementById('group-buttons');

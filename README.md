@@ -1,15 +1,11 @@
-# The Owl House Character Web
-This is an interactive character web for all the characters in The Owl House, made using vis-network in HTML, JS, and CSS.
+# vis-network Character Web Template
+This is an interactive character web template made using vis-network in HTML, JS, and CSS.
 
-**This is still in a sorta early beta!!** Once I've added all the characters I'm and made it better I'll probably say it's a "finished product" but still add more stuff to it :D
+**This is still in a sorta beta!!** Once I've added all the features I want to and made it better I'll probably say it's a "finished product" but still add more stuff to it :D
 
-This includes 87 characters, listed [here](./character_list.md), links between most characters going both ways to accommodate for each characters view, a collapsable sidebar with the option to hide each character and their links, and a light mode toggle. Read the links as that it's the view of the character the arrow is going to from the character the arrow is coming from. I appologise for how convoluted that makes it sound 😭
+This template includes class and group filters, a toggle to enable physics, light and dark mode, character search and more. You can find an example of a working project [here](https://github.com/TheEverWeird/The-Owl-House-Character-Web). (This template was made using that project.)
 
-Each character's node is coloured based on whether they're a main character, main side character, supporting side character, and minor side/background character.
-
-I have added filters for every coven, as well as the C.A.T.S., the Hexsquad, a couple of the Titan Trappers, and the loyal Coven Heads, though most covens do not have any members. The coven filters also apply to what track students studied.
-
-If you have any suggestions for changes to characters or relationships please make an issue, and if you have suggestions/edits for the code or anything else please make a pull request.
+If you have any suggestions for changes or issues please make an issue or a pull request.
 
 # Planned Features/Fixes
 * Improve performance
@@ -17,18 +13,11 @@ If you have any suggestions for changes to characters or relationships please ma
 * Add auto dark mode
 * Make it look better
 * Image gallery (with hyperlinks from the character to their position in the web)
-* Incorperate update.electronjs.org for Windows and macOS (add a popup on Linux)
 * Maybe add something with vis-timeline
 
 ## Acknowledgements & Third-Party Licenses
 
-**The Owl House is owned by Disney and was created by Dana Terrace, I am creating this project out of love for the show and am not claiming any ownership of content from the show.**
-
-I got my list of characters from [The Owl House Wiki](https://theowlhouse.fandom.com/wiki/Category:Characters).
-
-I got the coven icons from [The Owl House Wiki](https://theowlhouse.fandom.com/wiki/List_of_Covens), except for the Bad Girl Coven icon which I got from [Reddit](https://www.reddit.com/r/TheOwlHouse/comments/s9qnh8/diy_bad_girl_coven_make_ur_own_i_let_you_the_file/) (this recreation of the Bad Girl Coven logo is made by PulpiDelMar).
-
-This project utilizes the following third-party open-source assets and libraries:
+This project utilises the following third-party open-source assets and libraries:
 
 *   **[Google Fonts](https://fonts.google.com/)** - Used for all the fonts in the project. Distributed under the [SIL Open Font License 1.1](https://openfontlicense.org).
 *   **[Font Awesome Free](https://fontawesome.com)** - Used for user interface icons. The icons are licensed under [CC BY 4.0](https://creativecommons.org), and code under the [MIT License](https://opensource.org). 
