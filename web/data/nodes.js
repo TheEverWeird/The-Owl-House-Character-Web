@@ -58,7 +58,7 @@ const nodesData = [
   { "id": 57, "label": "Perry Portor", "color": "#4bd16f", "coven": "Oracle Coven", "group": "" },
   { "id": 58, "label": "Piniet", "color": "#4bd16f", "coven": "", "group": "" },
   { "id": 59, "label": "Principal Bump", "color": "#ff5454", "coven": "Abomination Coven", "group": "" },
-  { "id": 60, "label": "Prinicipal Faust", "color": "#4bd16f", "coven": "", "group": "" },
+  { "id": 60, "label": "Principal Faust", "color": "#4bd16f", "coven": "", "group": "" },
   { "id": 61, "label": "Professor Hermonculus", "color": "#4bd16f", "coven": "Abomination Coven", "group": "" },
   { "id": 62, "label": "Roselle", "color": "#4bd16f", "coven": "", "group": "" },
   { "id": 63, "label": "Salty", "color": "#4bd16f", "coven": "", "group": "" },
@@ -82,8 +82,8 @@ const nodesData = [
   { "id": 81, "label": "Potion Teacher", "color": "#4bd16f", "coven": "Potions Coven", "group": "" },
   { "id": 82, "label": "Detention Teacher", "color": "#4bd16f", "coven": "", "group": "" },
   { "id": 83, "label": "Oracle Teacher", "color": "#4bd16f", "coven": "Oracle Coven", "group": "" },
-  { "id": 84, "label": "Unamed H.A.S. Member", "color": "#4bd16f", "coven": "Bard Coven", "group": "" },
-  { "id": 85, "label": "Unamed Camp Members", "color": "#4bd16f", "coven": "", "group": "" },
+  { "id": 84, "label": "Unnamed H.A.S. Member", "color": "#4bd16f", "coven": "Bard Coven", "group": "" },
+  { "id": 85, "label": "Unnamed Camp Members", "color": "#4bd16f", "coven": "", "group": "" },
   { "id": 86, "label": "The Archivists", "color": "#4bd16f", "coven": "", "group": "" },
   { "id": 87, "label": "Vitimir", "color": "#4bd16f", "coven": "Potions Coven", "group": "Loyal Coven Heads" }
 ];
